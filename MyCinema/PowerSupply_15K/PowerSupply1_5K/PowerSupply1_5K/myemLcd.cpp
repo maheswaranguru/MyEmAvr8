@@ -64,7 +64,7 @@ void lcdInit( void )
  * Return   : NULL
  * Info     : Write a string in required line and position.
  ******************************************************************************/
-void lcdWriteStr( volatile unsigned char lcdLine, uint8_t lcdPosi, char* lcdStr )
+void lcdWriteStr( volatile unsigned char lcdLine, uint8_t lcdPosi, char *lcdStr )
 {
     //uint8_t temp = 0;
     char *strPtr = lcdStr;

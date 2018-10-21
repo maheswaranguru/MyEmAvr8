@@ -52,9 +52,9 @@
 #define LCDRS_LOW   CLEARPIN(LCDRS_PORT, LCDRS)
 
 #define FIRSTLINE_ADDRESS 0x80
-#define SECONDLINE_ADDRESS 0x80
-#define THIRDLINE_ADDRESS 0x90
-#define FOURTHLINE_ADDRESS 0xA0
+#define SECONDLINE_ADDRESS 0xC0
+#define THIRDLINE_ADDRESS 0x94
+#define FOURTHLINE_ADDRESS 0xD4
 
 #define FIRSTPOSITION 1
 
@@ -76,7 +76,7 @@ enum
 
 
 void lcdInit( void );
-void lcdWriteStr( uint8_t lcdLine, uint8_t lcdPosi, char* lcdStr );
+void lcdWriteStr( uint8_t lcdLine, uint8_t lcdPosi, char *lcdStr );
 void lcdWriteChar(uint8_t lcdCharLine, uint8_t lcdCharPosi, char byteToWrite );
 void lcdWriteDecimal(uint8_t line, uint8_t posi, uint8_t digi, uint16_t hexNum);
 void lcdClear(void);

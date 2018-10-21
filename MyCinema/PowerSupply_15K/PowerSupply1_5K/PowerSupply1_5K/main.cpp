@@ -18,11 +18,14 @@ int main(void)
     lcdInit();
     _delay_ms (1000);
     
-    lcdWriteChar(0, 5, 'M' );
+    lcdWriteChar(1, 5, 'M' );
     _delay_ms (1000);
     
     lcdWriteStr(1, 1, "Hi Dai");
-   
+     _delay_ms (1000);
+     
+     lcdWriteStr(2, 0, "Ithu rendu");
+     
     while (1) 
     {
         //gpioSetPin( &PORTB, NANO_LED );

@@ -102,7 +102,7 @@ void lcdWriteChar(uint8_t lcdCharLine, uint8_t lcdCharPosi, char byteToWrite )
 void lcdClear(void)
 {
     lcdWriteCmd(0x01);
-	_delay_ms(20);
+	_delay_ms(5);
     return;
 }
 
@@ -131,7 +131,7 @@ static void lcdWriteCmd( uint8_t cmd )
     LCDEN_HIGH;
     _delay_us(200);
     LCDEN_LOW;    
-     _delay_ms(2);
+    _delay_ms(2);
 
     return;
 }

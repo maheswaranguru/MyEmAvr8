@@ -55,7 +55,7 @@ ISR(TIMER0_OVF_vect)
 {
     static uint16_t timerCnt = 0;
     
-    TCNT0 = 24;
+    TCNT0 = 4;
     
    if( timerCnt++ >= 1000 )
    {
@@ -78,6 +78,5 @@ void refreshLcd( void )
     
     lcdClear();
     
-    lcdWriteDecimal(2, 3, 4, secCnt++ );
-    
+    lcdWriteDecimal(2, 3, 4, secCnt++ );    
 }    

@@ -161,7 +161,7 @@ static void lcdWriteData( uint8_t data )
     _delay_us(200);
     LCDEN_LOW;
     
-    _delay_us(20);             //!< Just delay between two char
+    _delay_us(400);             //!< Just delay between two char
     
     return;
 }

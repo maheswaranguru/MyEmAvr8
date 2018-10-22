@@ -39,6 +39,7 @@ SUBDIRS :=
 C_SRCS +=  \
 ../main.cpp \
 ../myemAvr8Gpio.cpp \
+../myEmAvrTimer.cpp \
 ../myemLcd.cpp
 
 
@@ -51,21 +52,25 @@ ASM_SRCS +=
 OBJS +=  \
 main.o \
 myemAvr8Gpio.o \
+myEmAvrTimer.o \
 myemLcd.o
 
 OBJS_AS_ARGS +=  \
 main.o \
 myemAvr8Gpio.o \
+myEmAvrTimer.o \
 myemLcd.o
 
 C_DEPS +=  \
 main.d \
 myemAvr8Gpio.d \
+myEmAvrTimer.d \
 myemLcd.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
 myemAvr8Gpio.d \
+myEmAvrTimer.d \
 myemLcd.d
 
 OUTPUT_FILE_PATH +=PowerSupply1_5K.elf
@@ -82,6 +87,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

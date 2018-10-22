@@ -6,30 +6,78 @@
  */ 
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include "myemAvr8Gpio.h"
 #include "myemLcd.h"
+#include "myEmAvrTimer.h"
 
 #define NANO_LED PORTB4
 
+myEmAvrTimer myTimer;
+
+void refreshLcd( void );
+
+
+static bool lcdUpdate = false;
 
 int main(void)
 {
-     _delay_ms (500);
+    DDRC |= 0x01;     
+    PORTC |= (1<<PORTC0);
+    
+    _delay_ms(200);
+     
+   PORTC &= ~(1<<PORTC0);
+    
     lcdInit();
-    _delay_ms (1000);
+    myTimer.Init ( ONE_SEC );
+    PORTC |= (1<<PORTC0);
     
     lcdWriteChar(1, 5, 'M' );
-    _delay_ms (1000);
-    
+   
     lcdWriteStr(1, 1, "Hi Dai");
-     _delay_ms (1000);
-     
+    
      lcdWriteStr(2, 0, "Ithu rendu");
      
+     sei();
     while (1) 
     {
-        //gpioSetPin( &PORTB, NANO_LED );
-        _delay_ms(1000);
+        if(lcdUpdate)
+        {
+            refreshLcd();
+            lcdUpdate = false;
+        }
+        _delay_ms(1);
     }
 }
 
+ISR(TIMER0_OVF_vect)
+{
+    static uint16_t timerCnt = 0;
+    
+    TCNT0 = 24;
+    
+   if( timerCnt++ >= 1000 )
+   {
+       timerCnt = 0;
+       gpioTogglePin( &PORTC, PORTC0 );       
+       lcdUpdate = true;
+    }
+  
+}
+/*******************************************************************************
+ * Name     : lcdMoveCursor
+ * Para1    : line to move cursor
+ * Para2    : position in that line 
+ * Return   : NULL
+ * Info     : Move cursor to needed place 
+ ******************************************************************************/
+void refreshLcd( void )
+{
+    static uint8_t secCnt = 0;
+    
+    lcdClear();
+    
+    lcdWriteDecimal(2, 3, 4, secCnt++ );
+    
+}    

@@ -6,5 +6,7 @@ main.cpp
 
 myemAvr8Gpio.cpp
 
+myEmAvrTimer.cpp
+
 myemLcd.cpp
 

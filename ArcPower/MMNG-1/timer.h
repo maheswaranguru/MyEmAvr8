@@ -13,7 +13,7 @@
 #include <avr/interrupt.h>
 #include "Arduino.h"
 
-#define NANO_LED PB5
+#include "config.h"
 
 
 void TimerInit( void );
